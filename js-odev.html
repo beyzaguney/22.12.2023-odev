@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: sans-serif;
+            font-size: 17px;
+            margin-bottom: 7px;
+        }
+
+        body {
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        input {
+            width: 40px;
+            border: 1px solid gray;
+            border-radius: 50px;
+            padding: 10px;
+        }
+
+        div {
+            border: 1px solid pink;
+            padding: 15px;
+        }
+        #sol{
+            width: 50%;
+            border-color: purple;
+        }
+        #sag{
+            width: 50%;
+            border-color: purple;
+        }
+
+        p {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: transparent;
+            border: 1px solid palevioletred;
+            padding: 10px;
+            border-radius: 50px;
+        }
+        button:hover{
+            background-color: palevioletred;
+            color: azure;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        // SORU-1
+        function soru1() {
+            document.getElementById("s1s").innerHTML = "";
+            for (let i = document.getElementById("s11").value; i <= document.getElementById("s12").value; i++) {
+                document.getElementById("s1s").innerHTML = document.getElementById("s1s").innerHTML + i + "&nbsp";
+            }
+        }
+        // SORU-2
+        function soru2(n) {
+            document.getElementById("s2s").innerHTML = "";
+            var a = 0, b = 1, c = 0;
+            document.getElementById("s2s").innerHTML = a + "&nbsp" + b + "&nbsp";
+            for (i = 2; i <= n; i++) {
+                c = a + b;
+                if (c <= n) {
+                    document.getElementById("s2s").innerHTML = document.getElementById("s2s").innerHTML + c + "&nbsp";
+                    a = b;
+                    b = c;
+                }
+            }
+        }
+        //SORU-3
+        function soru3(n) {
+            document.getElementById("s3s").innerHTML = "";
+            for (let i = 0; i <= n / 2; i++) {
+                if (n % i == 0)
+                    document.getElementById("s3s").innerHTML = document.getElementById("s3s").innerHTML + i + "&nbsp";
+            }
+        }
+        //SORU-4
+        function soru4(a, b, c) {
+            if (b > a && a > c)
+                document.getElementById("s4s").innerHTML = "ortanca: " + a;
+            if (c > a && a > b)
+                document.getElementById("s4s").innerHTML = "ortanca: " + a;
+            if (a > b && b > c)
+                document.getElementById("s4s").innerHTML = "ortanca: " + b;
+            if (c > b && b > a)
+                document.getElementById("s4s").innerHTML = "ortanca: " + b;
+            if (a > c && c > b)
+                document.getElementById("s4s").innerHTML = "ortanca: " + c;
+            if (b > c && c > a)
+                document.getElementById("s4s").innerHTML = "ortanca: " + c;
+
+        }
+        //SORU-5
+        function soru5(a, b) {
+            for (var sonuc = 0; b <= a; sonuc++) {
+                a = a - b;
+            }
+            document.getElementById("s5s").innerHTML = sonuc;
+        }
+        //SORU-6
+        function soru6(a, b) {
+            var x = Number(a);
+            var sonuc = 0;
+            for (let i = 1; i <= b; i++) {
+                sonuc += x;
+            }
+            document.getElementById("s6s").innerHTML = sonuc;
+        }
+        //SORU-7
+        function soru7() {
+            document.getElementById("s7s").innerHTML = "";
+            var toplam = Number(prompt("sayı girin:"));
+            if (toplam == 0)
+                document.getElementById("s7s").innerHTML = "0";
+            else {
+                sayac = 1, n = Number(prompt("sonraki sayıyı girin:"));
+                toplam += n;
+                while (n != 0) {
+                    n = Number(prompt("sonraki sayıyı girin:"));
+                    toplam += n;
+                    sayac++;
+                }
+                document.getElementById("s7s").innerHTML = toplam / sayac;
+            }
+        }
+        //SORU-8
+        function soru8() {
+            var tektoplam = 0, cifttoplam = 0, a;
+            for (let i = 0; i < 20; i++) {
+                a = Number(prompt("sayı girin:"));
+                if (a % 2 == 0)
+                    cifttoplam += a;
+                else
+                    tektoplam += a;
+            }
+            document.getElementById("s8s").innerHTML = "tek sayıların toplamı:" + tektoplam + "&nbsp çift sayıların toplamı:" + cifttoplam;
+        }
+        //SORU-9
+        function soru9(a, b) {
+            var obeb;
+            for (let i = 1; i <= a && i <= b; i++) {
+                if (a % i == 0 && b % i == 0)
+                    obeb = i;
+            }
+            document.getElementById("s9s").innerHTML = "OBEB(" + a + "," + b + "): &nbsp" + obeb;
+        }
+        //SORU-10
+        function soru10(x) {
+            if (x % 2 == 0)
+                document.getElementById("s10s").innerHTML = x + "&nbsp çift bir sayıdır";
+            else
+                document.getElementById("s10s").innerHTML = x + "&nbsp tek bir sayıdır";
+        }
+    </script>
+</head>
+
+<body>
+    <div id="sol">
+        <div>
+            <p>1-X ile n arasındaki doğal sayılar</p><br>
+            <p>X:</p>
+            <input id="s11" type="text"><br>
+            <p>N:</p>
+            <input id="s12" type="text">
+            <button onclick="soru1()">Göster</button>
+            <br>
+            <p id="s1s"></p>
+        </div><br>
+        <div>
+            <p>2-Fibonacci</p><br>
+            <p>Sayı:</p>
+            <input id="s2" type="text">
+            <button onclick="soru2(document.getElementById('s2').value)">Göster</button><br>
+            <p id="s2s"></p><br>
+        </div>
+        <div>
+            <p>3-Sayının tam bölenlerini bulma</p><br>
+            <p>Sayı:</p>
+            <input id="s3" type="text">
+            <button onclick="soru3(document.getElementById('s3').value)">Göster</button><br>
+            <p id="s3s"></p><br>
+        </div>
+        <div>
+            <p>4-Üç sayıdan ortadakini bulma</p><br>
+            <p>Birinci sayı:</p>
+            <input id="s41" type="text"><br>
+            <p>İkinci sayı:</p>
+            <input id="s42" type="text"><br>
+            <p>Üçüncü sayı:</p>
+            <input id="s43" type="text">
+            <button
+                onclick="soru4(document.getElementById('s41').value,document.getElementById('s42').value,document.getElementById('s43').value)">Göster</button><br>
+            <p id="s4s"></p><br>
+        </div>
+        <div>
+            <p>5-Bölme operatörü kullanmadan bölme</p><br>
+            <p>Sayı 1:</p>
+            <input id="s51" type="text"><br>
+            <p>Sayı 2:</p>
+            <input id="s52" type="text">
+            <button
+                onclick="soru5(document.getElementById('s51').value,document.getElementById('s52').value)">Göster</button><br>
+            <p id="s5s"></p><br>
+        </div>
+    </div>
+    <div id="sag">
+        <div>
+            <p>6-Çarpma operatörü kullanmadan çarpma</p><br>
+            <p>Sayı 1:</p>
+            <input id="s61" type="text"><br>
+            <p>Sayı 2:</p>
+            <input id="s62" type="text">
+            <button
+                onclick="soru6(document.getElementById('s61').value,document.getElementById('s62').value)">Göster</button><br>
+            <p id="s6s"></p><br>
+        </div>
+        <div>
+            <p>7-0 girilene kadar girilen sayıların ortalamasını bulma</p><br>
+            <button onclick="soru7()">Sayı girmeye başla</button><br>
+            <p id="s7s"></p><br>
+        </div>
+        <div>
+            <p>8-girilen 20 tek ve çift sayıyı ayrı ayrı toplama</p><br>
+            <p></p>
+            <button onclick="soru8()">Sayı girmeye başla</button><br>
+            <p id="s8s"></p><br>
+        </div>
+        <div>
+            <p>9-Girilen sayıların obeb'ini bulma</p><br>
+            <p>Sayı 1:</p>
+            <input id="s91" type="text"><br>
+            <p>Sayı 2:</p>
+            <input id="s92" type="text">
+            <button
+                onclick="soru9(document.getElementById('s91').value,document.getElementById('s92').value)">Göster</button><br>
+            <p id="s9s"></p><br>
+        </div>
+        <div>
+            <p>10-Girilen sayı tek mi çift mi</p><br>
+            <p>Sayı:</p>
+            <input id="s10" type="text">
+            <button onclick="soru10(document.getElementById('s10').value)">Göster</button><br>
+            <p id="s10s"></p><br>
+            <p>Varsayım:</p>
+        </div>
+    </div>
+</body>
+
+</html>
